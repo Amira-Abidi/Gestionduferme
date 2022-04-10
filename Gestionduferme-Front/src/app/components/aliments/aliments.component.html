@@ -1,0 +1,84 @@
+<app-menu></app-menu>
+    <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+    <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <h1>Liste des aliments</h1>
+                  </div>
+                  <div class="col-sm-6">
+
+                    <ol class="breadcrumb float-sm-right">
+
+                    </ol>
+                  </div>
+                </div>
+              </div>
+        <section class="content">
+
+            <div class="container-fluid">
+              <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+
+                  <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <br>
+                      <div class="container row">
+
+
+<!-- Profile Image -->
+<div class="card card-gray card-outline" style="margin-left: 10px;" *ngFor="let a of aliment | async">
+  <div class="card-body box-profile">
+
+    <h3 class="profile-username text-center">{{a.name}}</h3>
+
+    <ul class="list-group list-group-unbordered mb-3">
+      <li class="list-group-item">
+        <b>Calcium</b> <a class="float-right">{{a.ca}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>em</b> <a class="float-right">{{a.em}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>protéine</b> <a class="float-right">{{a.p}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>ms</b> <a class="float-right">{{a.ms}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>ufl</b> <a class="float-right">{{a.ufl}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>ufv</b> <a class="float-right">{{a.ufv}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>prix</b> <a class="float-right">{{a.prix}}</a>
+      </li>
+
+      <li class="list-group-item">
+        <b>Type</b> <a class="float-right">{{a.type}}</a>
+      </li>
+
+    <li class="list-group-item">
+        <i class="fas fa-edit"  style="color:rgb(34,187,51)" (click) = "updateAliment(a.id)" ></i>Editer
+        <i class="fas fa-trash" style="color:rgb(187,33,36)" (click) = "deleteAliment(a.id)"></i>Supprimer
+        <i class="fas fa-eye" style="color:rgb(91,192,222)" (click) = "AlimentDetails(a.id)" ></i>Détails
+    </li>
+    </ul>
+
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
+    </div></div></div></div></div></section></section></div></div></body>

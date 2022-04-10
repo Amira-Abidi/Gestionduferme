@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand">
+    <label>Ferme</label>
+    <ul class="navbar-nav" style="margin-left:950px">
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Se connecter</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contact</a>
+          </li>
+      </ul>
+  </ul></nav>
+</div></body></html>
+<router-outlet></router-outlet>

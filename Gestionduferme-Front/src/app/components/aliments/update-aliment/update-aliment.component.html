@@ -1,0 +1,173 @@
+<app-menu></app-menu>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6" style="margin-left: 300px;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Editer aliment</h3>
+          <div class="card-tools">
+
+          </div>
+        </div>
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+        <div class="card-body">
+
+            <div class="form-group">
+              <label for="name">Nom de l'aliment</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="aliment.name"
+                required
+                #name="ngModel"
+              />
+            </div>
+
+          <div class="form-group">
+            <label for="name">Calcium</label>
+            <input
+            type="text"
+            class="form-control"
+            name="ca"
+            [(ngModel)]="aliment.ca"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Cellulose brute</label>
+            <input
+            type="text"
+            class="form-control"
+            name="cellulose-brute"
+            [(ngModel)]="aliment.cellulose_brute"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Em</label>
+            <input
+            type="text"
+            class="form-control"
+            name="em"
+            [(ngModel)]="aliment.em"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Matière azotée totale</label>
+            <input
+            type="text"
+            class="form-control"
+            name="mat"
+            [(ngModel)]="aliment.mat"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Ms</label>
+            <input
+            type="text"
+            class="form-control"
+            name="ms"
+            [(ngModel)]="aliment.ms"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Phosphore</label>
+            <input
+            type="text"
+            class="form-control"
+            name="ms"
+            [(ngModel)]="aliment.p"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Unité fourragère laitière</label>
+            <input
+            type="text"
+            class="form-control"
+            name="ufl"
+            [(ngModel)]="aliment.ufl"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Unité fourragère viande</label>
+            <input
+            type="text"
+            class="form-control"
+            name="ufv"
+            [(ngModel)]="aliment.ufv"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Prix</label>
+            <input
+            type="text"
+            class="form-control"
+            name="prix"
+            [(ngModel)]="aliment.prix"
+            required
+            #name="ngModel"
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Type</label>
+            <select
+              name="type"
+              class="form-control"
+              id="type"
+              [(ngModel)]= "aliment.type">
+              <option value="fourrage">Fourrage</option>
+              <option value="complement">Complément</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn sb">
+              Valider
+            </button>
+            <button type="reset" class="btn btn-default float-right">
+              Annuler
+            </button>
+          </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isFailed"
+          >
+            {{ errorMessage }}
+          </div>
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+

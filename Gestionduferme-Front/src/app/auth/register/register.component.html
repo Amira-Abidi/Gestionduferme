@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>register</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand">
+    <label class="farm">Gestion du ferme</label>
+    <ul class="navbar-nav" style="margin-left:550px">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/register" class="nav-link">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Se connecter</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contact</a>
+          </li>
+      </ul>
+  </ul></nav>
+  <br>
+   <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-4" style="margin-left: 500px; margin-top: 70px;">
+          <!-- general form elements -->
+          <div class="card card-default">
+            <div class="card-header">
+              <h2 class="card-title">S'inscrire</h2>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+              <div class="card-body">
+
+
+                <div class="form-group">
+                  <label for="username">Nom d'utilisateur</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    [(ngModel)]="form.username"
+                    required
+                    minlength="3"
+                    maxlength="20"
+                    #username="ngModel"
+                  />
+                  <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                    <div *ngIf="username.errors.required">Nom d'utilisateur requis!</div>
+                    <div *ngIf="username.errors.minlength">
+                      Le nom d'utilisateur doit comporter au moins 3 caractères
+                    </div>
+                    <div *ngIf="username.errors.maxlength">
+                      Le nom d'utilisateur doit comporter au maximum 20 caractères
+                    </div>
+                  </div>
+                </div>
+
+
+           <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+            <div *ngIf="email.errors.required">Email requis!</div>
+            <div *ngIf="email.errors.email">
+              L'E-mail doit être une adresse E-mail valide
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+            <div *ngIf="password.errors.required">Mot de passe requis!</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+        <div class="form-group">
+          <button type="submit" class="btn btn-lg">S'inscrire</button>
+        </div>
+      </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Échec de l'inscription!<br />{{ errorMessage }}
+        </div>
+        </div>
+      </form>
+
+      <div class="alert alert-light" *ngIf="isSuccessful">
+        Votre inscription est réussie !
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</section>
+</div></body></html>

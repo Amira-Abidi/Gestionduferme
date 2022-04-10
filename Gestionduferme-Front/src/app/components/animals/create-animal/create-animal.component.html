@@ -1,0 +1,102 @@
+<app-menu></app-menu>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6" style="margin-left: 470px;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Ajouter un animal</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+
+        <div class="card-body">
+        <div class="form-group">
+            <label for="name">Catégorie</label>
+            <select
+              name="category"
+              class="form-control"
+              id="category"
+              [(ngModel)]= "animal.animal_category">
+              <option value="vache">Vache</option>
+              <option value="lapin" disabled>Lapin</option>
+              <option value="poule" disabled>Poule</option>
+            </select>
+          </div>
+
+            <div class="form-group">
+              <label for="name">Key</label>
+              <input
+                type="text"
+                class="form-control"
+                name="animal_key"
+                [(ngModel)]="animal.animal_key"
+                required
+                #name="ngModel"
+              />
+
+              <div class="form-group">
+                <label for="heure">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  [(ngModel)]="animal.name"
+                  required
+                  #name="ngModel"
+                />
+
+              </div>
+            </div>
+
+
+        <div class="form-group">
+            <label for="name">Race</label>
+            <select
+              name="race"
+              class="form-control"
+              id="race"
+              [(ngModel)]= "animal.race">
+              <option value="Holstein">Holstein</option>
+              <option value="Pie noire">Pie noire</option>
+              <option value="Tarentaise">Tarentaise</option>
+              <option value="Bleu blanc de berge">Bleu blanc de berge</option>
+              <option value="Brown swiss">Brown swiss</option>
+              <option value="Limousine">Limousine</option>
+              <option value="Limousine">Race local</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" class="btn sb">
+              Valider
+            </button>
+            <button type="reset" class="btn btn-light float-right">
+              Annuler
+            </button>
+          </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isFailed">
+
+            {{ errorMessage }}
+
+          </div>
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+
+

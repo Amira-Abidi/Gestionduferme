@@ -1,0 +1,95 @@
+<app-menu></app-menu>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6" style="margin-left: 300px;">
+      <div class="card" [hidden]="isDisplayed">
+        <div class="card-header">
+          <h3 class="card-title">Ajouter une commande</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-plus" routerLink="/add-aliment">Nouveau aliment</i>
+            </button>
+          </div>
+        </div>
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+          [hidden]="isDisplayed"
+        >
+
+        <div class="card-body">
+            <div class="form-group">
+              <label for="name">Date</label>
+              <input
+                type="date"
+                class="form-control"
+                name="date"
+                [(ngModel)]="commande.date"
+                required
+                #name="ngModel"
+              />
+            </div>
+
+
+          <label>Select aliment</label>
+          <table  id="equipe"
+            required
+            name="equipe" >
+            <tr *ngFor="let al of aliments " >
+          <Td> <input type="checkbox" [value]= 'al' name= "{{al}}"
+          (change)='getAlimentId($event,al)'> {{al.name}}
+          </Td><br>
+          </tr>
+          </table>
+
+
+          <div class="form-group">
+            <label for="name">Quantite</label>
+            <input
+            type="text"
+            class="form-control"
+            name="quantite"
+            [(ngModel)]="commande.quantite"
+            required
+            #name="ngModel"
+          />
+
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn sb">
+              Valider
+            </button>
+            <button type="reset" class="btn btn-default float-right">
+              Annuler
+            </button>
+          </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isFailed"
+          >
+            {{ errorMessage }}
+          </div>
+        </div>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div class="small-box bg-success"
+  [hidden]="!isDisplayed">
+  <div class="inner">
+  <h3>Commande</h3>
+  <p>Quantité: {{commande.quantite}}</p>
+  <p>Date: {{commande.date}}</p>
+  </div>
+  <div class="icon">
+  <i class="fas fa-shopping-bag"></i>
+  </div>
+  <a href="create-aliment" class="small-box-footer">Ajouter une autre commande<i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+</div>
+</section>

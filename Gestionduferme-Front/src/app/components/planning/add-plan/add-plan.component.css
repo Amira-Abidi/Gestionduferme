@@ -1,0 +1,16 @@
+.card-header{
+  background-color: #148710;
+  color:white;
+}
+
+.btn.sb{
+  background-color: #148710;
+  color: white;
+}
+
+.card{
+  margin-top: 20px;
+  margin-left: 150px;
+  overflow-y: scroll;
+  height: 400px;
+}

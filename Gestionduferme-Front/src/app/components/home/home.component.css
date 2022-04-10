@@ -1,0 +1,16 @@
+nav{
+   background-color: #04063800;
+}
+a{
+    color:aliceblue
+}
+label{
+    color:aliceblue;
+    font-size: 30px;
+}
+
+.wrapper{
+  background-image:url("../../../assets/images/bg1.jpg");
+  height : 657px;
+  }
+

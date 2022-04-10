@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentification</title>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand">
+    <label class="farm">Gestion du ferme</label>
+    <ul class="navbar-nav" style="margin-left:550px">
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link">S'inscrire</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link">Se connecter</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contact</a>
+          </li>
+      </ul>
+  </ul></nav>
+<br><br><br>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-4" style="margin-left: 500px; margin-top: 70px;">
+        <!-- jquery validation -->
+        <div class="card card-default">
+          <div class="card-header">
+            <h2 class="card-title">Se connecter</h2>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form id="quickForm"
+          *ngIf="!isLoggedIn"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="form.username"
+                required
+                #username="ngModel" placeholder="Entrer le nom d'utilisateur">
+              </div>
+              <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && username.invalid"
+            >
+            Nom d'utilisateur requis!
+          </div>
+          <label for="password">Mot de passe</label>
+              <div class="form-group">
+                <input type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+                placeholder="Entrer le mot de passe">
+              </div>
+              <div class="form-group">
+
+
+                <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f.submitted && password.invalid"
+              >
+                <div *ngIf="password.errors.required">Mot de passe requis!</div>
+                <div *ngIf="password.errors.minlength">
+                  Le mot de passe doit être au moins de 6 caractères
+                </div>
+              </div>
+            </div>
+
+              <div class="form-group mb-0">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                  <label class="custom-control-label" for="exampleCheck1">J'accepte les conditions d'utilisation.</label>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-lg">Login</button>
+            </div>
+            <div class="form-group">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f.submitted && isLoginFailed"
+              >
+              Échec de la connexion: {{ errorMessage }}
+              </div>
+            </div>
+          </form>
+          <div class="alert alert-light" *ngIf="isLoggedIn">
+            Gestion du ferme
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</section>
+</div></body></html>

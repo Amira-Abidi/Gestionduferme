@@ -1,0 +1,193 @@
+<app-menu></app-menu>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6" style="margin-left: 300px;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Add Planning</h3>
+        </div>
+        <form
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+        <div class="card-body">
+
+         <div class="form-group">
+            <label>Animal</label>
+            <select
+              name="animal"
+              class="form-control"
+              id="animal"
+              [(ngModel)]="planning.animal_name">
+
+              <option *ngFor="let animal of animals" [value]="animal.name">
+
+              </option>
+            </select>
+
+          </div>
+
+            <div class="form-group">
+              <label for="poids-vif">Poids vif (kg)</label>
+              <input
+                type="number"
+                class="form-control"
+                name="poids-vif"
+                id="poidsVif"
+                (ngModelChange)="onchangePoids($event)"
+                [(ngModel)]="planning.poids_vif"
+                required
+                #name="ngModel"
+              />
+            </div>
+
+          <div class="form-group">
+            <label for="name">Poids_metabolique</label>
+            <input
+            type="number"
+            class="form-control"
+            name="poids-metabolique"
+            [value]="poids_metabolique"
+            [(ngModel)]="planning.Poids_metabolique"
+            (ngModelChange)="onCalculBesoinEntretien($event)"
+            required
+            #name="ngModel"
+            disabled
+          />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Potentiel de production</label>
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              [(ngModel)]="planning.potentiel_de_prod"
+              required
+              #name="ngModel"
+              (ngModelChange)="onChangeProduction($event)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Production type</label>
+            <select
+              name="production"
+              class="form-control"
+              id="production"
+              [(ngModel)]= "planning.production"
+              (ngModelChange)="onChangeUnity($event)"
+              >
+              <option value="lait">Lait</option>
+              <option value="viande">Viande</option>
+
+            </select>
+
+          </div>
+
+          <label>{{unite}}</label>
+
+          <div class="form-group">
+            <label for="name">Capacité d'ingestion  :</label>
+            <span>{{capacity}}</span>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="name">Besoin énergitique :</label>
+            <span>{{ufl}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Besoin protéique :</label>
+             <span>{{pdi}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Besoin Calcium :</label>
+            <span>{{ca}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Besoin phosphore :</label>
+            <span>{{p}}</span>
+          </div>
+
+          <label>Ration de Base:</label>
+            <table id="fouurrage"
+            required
+            name="fourrage" >
+            <tr *ngFor="let al of aliments">
+              <div *ngIf="(al.type == 'fourrage')">
+            <Td> <input type="checkbox" [value]= 'al' name= "{{al}}"
+            (change)='getQtId($event,al)'
+            > {{al.name}} <br>
+
+            <label for="name">Coût :</label>
+            <span>{{al.prix}}</span><br>
+
+          </div>
+          </tr>
+          <div class="form-group">
+            <label for="name">Quantité Fourrage :</label>
+            <span name="QtF">{{planning.quantite_fourrage}}</span>
+            </div>
+          <p>Il faut donner {{QtF}} pour chaque aliment</p>
+          </table>
+
+          <div class="form-group">
+            <label for="name">Pourcentage de complément</label>
+            <input
+            type="number"
+            class="form-control"
+            name="Pourcentage"
+            placeholder="%"
+            id="percent"
+            required
+          />
+          </div>
+
+        <label>Complement:</label>
+        <table id="fouurrage"
+          required
+          name="fourrage" >
+          <tr *ngFor="let al of aliments">
+            <div *ngIf="(al.type == 'complement')">
+          <Td> <input type="checkbox" [value]= 'al' name= "{{al}}"
+          (change)='getQtCId($event,al)'
+          > {{al.name}}
+          </Td><br>
+        </div>
+          </tr>
+        </table>
+
+        <div class="form-group">
+        <label>Quantité Complément :</label>
+        <span name="Quantite">{{planning.quantite_complement}}</span>
+
+      </div>
+          <div class="form-group">
+            <button type="submit" class="btn sb">
+              Validate
+            </button>
+            <button type="reset" class="btn btn-default float-right">
+              Cancel
+            </button>
+          </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isFailed"
+          >
+            {{ errorMessage }}
+          </div>
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+

@@ -1,0 +1,160 @@
+<app-menu></app-menu>
+<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid" style="margin-left: 200px;">
+        <div class="row">
+          <div class="col-md-3">
+              </div>
+              </div>
+              <div class="container row">
+              <div class="col-md-12">
+              <h3>Ajouter l'image</h3>
+              </div>
+              <div class="col-md-6">
+              <input type="file" (change)="onFileChanged($event)">
+              <img [src]="imgURL" height="200" *ngIf="imgURL">
+              </div>
+              <div class="col-md-6">
+              <input type="button" (click)="onUpload()" value="upload">
+              </div>
+              <div class="col-md-12" style="margin-top: 20px;">
+              <div class="alert alert-primary" role="alert"
+              *ngIf="message && ajouter">{{message}}
+              </div>
+              </div>
+              <div class="col-md-12" style="margin-top: 20px;">
+              <div class="alert alert-danger" role="alert"
+              *ngIf="message && !ajouter">{{message}}
+              </div>
+              </div>
+              </div>
+              <hr />
+              <div class="container row">
+              <div class="col-md-12">
+              <h3>Afficher l'image</h3>
+              </div>
+              </div>
+              <div class="container row">
+              <div class="col-md-6">
+              <input type="text" class="form-control" id="name"
+              placeholder="nom_image.type" [(ngModel)]="imageName" name="name" />
+              </div>
+
+              <div class="col-md-6">
+                <input type="button" (click)="getImage()" value="Afficher l'image">
+                </div>
+                </div>
+                <div class="col-md-12" style="margin-top: 20px;">
+                <div class="alert alert-danger" role="alert"
+                *ngIf="messNontrouve">{{messNontrouve}}
+                </div>
+                </div>
+                <div class="container row" >
+                <div class="col-md-12">
+                <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage" style="width: 30%;margin-top: 30px;">
+                </div>
+                </div>
+                </div>
+                
+<!--
+    <section class="content">
+      <div class="container-fluid" style="margin-left: 200px;" *ngIf="currentUser; else loggedOut">
+        <div class="row">
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src=""
+                       alt="User profile picture">
+                </div>
+                <div class="col-md-6">
+                   <input type="file" (change)="onFileChanged($event)">
+                </div>
+                <div class="col-md-6">
+                 <input type="button" (click)="onUpload()" value="upload">
+                </div>
+              </div>
+              
+              <hr />
+              
+              <div class="container row">
+             
+                  <div class="col-md-12">
+              
+                      <div *ngIf=message>{{message}}</div>
+              
+                  </div>
+             
+              </div>
+
+              <div class="container row">
+              
+                  <div class="col-md-6">
+              
+                      <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+                          name="name" />
+              
+                  </div>
+              
+                  <div class="col-md-6">
+              
+                      <input type="button" (click)="getImage()" value="Get Image">
+              
+                  </div>
+              
+              </div>
+              
+              
+              <div class="container row">
+              
+                  <div class="col-md-12">
+              
+                      <div *ngIf=retrievedImage>
+              
+                          <img [src]="retrievedImage">
+              
+                      </div>
+              
+                  </div>
+              
+              <strong>{{ currentUser.username }}</strong> Profile
+                <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">About Me</h3>
+              </div>
+             
+              <div class="card-body">
+                <p>
+                  <strong>Token:</strong>
+                  {{ currentUser.accessToken.substring(0, 20) }} ...
+                  {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+                </p>
+
+                <hr>
+
+                <p>
+                  <strong>Email:</strong>
+                  {{ currentUser.email }}
+                </p>
+                <strong>Roles:</strong>
+                <ul>
+                  <li *ngFor="let role of currentUser.roles">
+                    {{ role }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div></section>
+<ng-template #loggedOut>
+ Please login.
+</ng-template>
+
+-->
+
+
+  
